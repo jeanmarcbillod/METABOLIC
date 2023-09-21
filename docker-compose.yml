@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  metabolic-app:
+    environment:
+      - GTDBTK_DATA_PATH=/app/GTDBTK_DB/release214
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    stdin_open: true
+    tty: true
+    # entrypoint: ["/bin/bash", "-c", "source activate METABOLIC_v4.0 && exec /bin/bash"]
+    volumes:
+      - .:/app/
+    ports:
+      - "8000:8000"
